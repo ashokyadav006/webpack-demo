@@ -1,22 +1,41 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 //const DashboardPlugin = require('webpack-dashboard/plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const merge = require("webpack-merge");
 
-module.exports = {
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Webpack demo',
-        }),
-        //new DashboardPlugin(),
-        new FriendlyErrorsWebpackPlugin(),
-        new ErrorOverlayPlugin(),
-    ],
-    devServer: {
-        stats: 'errors-only',
-        host: 'localhost',
-        port: 8080,
-        overlay: true,
-        open: true // Open the page in browser
+const parts = require('./webpack.parts');
+
+const commonConfig = merge([
+    {
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: 'Webpack demo',
+            })
+        ]
     }
+]);
+
+const productionConfig = merge([]);
+
+const developmentConfig = merge([
+    parts.devServer({
+        host: 'localhost',
+        port: 8080
+    }),
+    {
+        plugins: [
+            //new DashboardPlugin(),
+            new FriendlyErrorsWebpackPlugin(),
+            new ErrorOverlayPlugin(),
+        ]
+    }
+]);
+
+module.exports = mode => {
+    if (mode === 'production') {
+        return merge(commonConfig, productionConfig, { mode });
+    }
+
+    return merge(commonConfig, developmentConfig, { mode });
 }
