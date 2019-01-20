@@ -55,3 +55,10 @@ exports.purgeCss = ({ paths }) => ({
         new PurgeCSSPlugin({ paths })
     ]
 });
+
+exports.autoprefix = () => ({
+    loader: "postcss-loader",
+    options: {
+        plugins: () => [require("autoprefixer")()],
+    },
+})

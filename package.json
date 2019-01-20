@@ -8,6 +8,7 @@
     "build": "webpack --env production"
   },
   "devDependencies": {
+    "autoprefixer": "^9.4.5",
     "css-loader": "^2.1.0",
     "error-overlay-webpack-plugin": "^0.1.6",
     "friendly-errors-webpack-plugin": "^1.7.0",
@@ -16,6 +17,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
+    "postcss-loader": "^3.0.0",
     "purecss-sass": "^1.0.0",
     "purgecss-webpack-plugin": "^1.4.0",
     "sass-loader": "^7.1.0",
