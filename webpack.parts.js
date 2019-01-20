@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 
 exports.devServer = ({ host, port} = {}) => ({
     devServer:{
@@ -48,3 +49,9 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
         plugins: [plugin],
     };
 };
+
+exports.purgeCss = ({ paths }) => ({
+    plugins: [ 
+        new PurgeCSSPlugin({ paths })
+    ]
+});
