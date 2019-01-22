@@ -21,7 +21,8 @@ const commonConfig = merge([
             })
         ]
     },
-    parts.loadCSS()
+    parts.loadCSS(),
+    parts.loadJavaScript({ include: PATHS.app }),
 ]);
 
 const productionConfig = merge([
