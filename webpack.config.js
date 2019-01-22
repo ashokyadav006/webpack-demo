@@ -31,6 +31,12 @@ const productionConfig = merge([
     parts.purgeCss({
         paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
     }),
+    parts.loadImages({
+        options: {
+            limit: 15000, //15kb
+            name: "[name].[ext]"
+        }
+    })
 ]);
 
 const developmentConfig = merge([
@@ -44,7 +50,8 @@ const developmentConfig = merge([
             new FriendlyErrorsWebpackPlugin(),
             new ErrorOverlayPlugin(),
         ]
-    }
+    },
+    parts.loadImages()
 ]);
 
 module.exports = mode => {
