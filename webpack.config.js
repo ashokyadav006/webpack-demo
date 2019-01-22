@@ -38,7 +38,14 @@ const productionConfig = merge([
             limit: 15000, //15kb
             name: "[name].[ext]"
         }
-    })
+    }),
+    {
+        optimization: {
+            splitChunks: {
+                chunks: "initial",
+            },
+        },
+    },
 ]);
 
 const developmentConfig = merge([

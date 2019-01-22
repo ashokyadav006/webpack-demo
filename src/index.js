@@ -1,3 +1,5 @@
+import "react";
+import "react-dom";
 import "purecss-sass";
 
 import component from "./component";
