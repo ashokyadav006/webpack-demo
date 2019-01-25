@@ -25,6 +25,7 @@ const commonConfig = merge([
     parts.loadCSS(),
     parts.loadJavaScript({ include: PATHS.app }),
     parts.generateSourceMaps({ type: 'source-map'}),
+    parts.setFreeVariable("HELLO", "hello from config"),
     //parts.attachRevision(),
 ]);
 

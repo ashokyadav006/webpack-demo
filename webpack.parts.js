@@ -5,6 +5,7 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
+const webpack = require('webpack');
 
 exports.devServer = ({ host, port} = {}) => ({
     devServer:{
@@ -128,3 +129,12 @@ exports.minifyCSS = ({ options }) => ({
         }),
     ],
 });
+
+exports.setFreeVariable = (key, value) => {
+    const env = {};
+    env[key] = JSON.stringify(value);
+
+    return {
+        plugins: [new webpack.DefinePlugin(env)],
+    };
+};

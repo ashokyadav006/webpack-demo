@@ -1,6 +1,6 @@
 import logo from './logo.png';
 
-export default (text = "Hello India") => {
+export default (text = HELLO) => {
     const element = document.createElement("div");
 
     element.innerHTML = `<img src="${logo}" height="20px"></img> `+text;
