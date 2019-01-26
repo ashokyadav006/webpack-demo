@@ -31,6 +31,12 @@ const commonConfig = merge([
 
 const productionConfig = merge([
     //parts.minifyJavaScript(),
+    {
+        output: {
+            chunkFilename: "[name].[chunkhash:4].js",
+            filename: "[name].[chunkhash:4].js",
+        }
+    },
     parts.minifyCSS({
         options: {
             discardComments: {
@@ -49,7 +55,7 @@ const productionConfig = merge([
     parts.loadImages({
         options: {
             limit: 15000, //15kb
-            name: "[name].[ext]"
+            name: "[name].[hash:4].[ext]"
         }
     }),
     {

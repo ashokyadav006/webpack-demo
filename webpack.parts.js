@@ -36,7 +36,7 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
 
 exports.extractCSS = ({ include, exclude, use = [] }) => {
     const plugin = new MiniCssExtractPlugin({
-        filename: "[name].css"
+        filename: "[name].[contenthash:4].css"
     });
 
     return {
